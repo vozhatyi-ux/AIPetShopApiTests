@@ -39,8 +39,8 @@ class TestPet:
     def test_add_pet(self):
         with allure.step("Подготовка данных для создания питомца"):
             payload = {
-                "id": 10,
-                "name": "doggie",
+                "id": 1,
+                "name": "Buddy",
                 "status": "available"
             }
 
@@ -57,9 +57,9 @@ class TestPet:
             assert response_json['name'] == payload['name'], "Имя питомца не совпадает с ожидаемым"
             assert response_json['status'] == payload['status'], "Статус питомца не совпадает с ожидаемым"
 
-    @allure.title("Добавление нового питомца - test case #41")
-    def test_add_pet(self):
-        with allure.step("Подготовка данных для создания питомца - test case #41"):
+    @allure.title("Добавление нового питомца Doggie")
+    def test_add_pet_Doggie(self):
+        with allure.step("Подготовка данных для создания питомца Doggie"):
             payload = {
                 "id": 10,
                 "name": "doggie",
@@ -71,15 +71,15 @@ class TestPet:
                           "name": "string"}]
             }
 
-        with allure.step("Отправка запроса на создание питомца - test case #41"):
+        with allure.step("Отправка запроса на создание питомца Doggie"):
             response = requests.post(url=f"{BASE_URL}/pet/", json=payload)
             response_json = response.json()
 
-        with allure.step("Проверка статуса ответа и вадидации JSON-схемы - test case #41"):
+        with allure.step("Проверка статуса ответа и вадидации JSON-схемы питомца Doggie"):
             assert response.status_code == 200, "Код ответа не совпал с ожидаемым"
             jsonschema.validate(response_json, PET_SCHEMA)
 
-        with allure.step("Проверка параметров питомца в ответе - test case #41"):
+        with allure.step("Проверка параметров питомца в ответе Doggie"):
             assert response_json['id'] == payload['id'], "Id питомца не совпадает с ожидаемым"
             assert response_json['name'] == payload['name'], "Имя питомца не совпадает с ожидаемым"
             assert response_json['status'] == payload['status'], "Статус питомца не совпадает с ожидаемым"
