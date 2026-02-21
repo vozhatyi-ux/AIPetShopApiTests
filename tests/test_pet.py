@@ -109,7 +109,7 @@ class TestPet:
 
             if expected_status_code == 200:
                 assert isinstance(response_json, list)
-            if expected_status_code == 400:
+            else:
                 assert isinstance(response_json, dict)
 
 
