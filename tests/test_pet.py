@@ -95,16 +95,21 @@ class TestPet:
             ("available", 200),
             ("pending", 200),
             ("sold", 200),
-            ("nonexistent_status", 200),
+            ("nonexistent_status", 400),
             ("", 400)
         ]
     )
     def test_get_pets_by_status(self, status, expected_status_code):
-        with allure.step("Отправка запроса на получение питомцев по статусу {status}"):
+        with allure.step(f"Отправка запроса на получение питомцев по статусу {status}"):
             response = requests.get(url=f"{BASE_URL}/pet/findByStatus", params={"status": status})
+            response_json = response.json()
 
         with allure.step("Проверка статуса ответа и формата данных"):
             assert response.status_code == expected_status_code
-            assert isinstance(response.json(), list)
-        
+
+            if expected_status_code == 200:
+                assert isinstance(response_json, list)
+            if expected_status_code == 400:
+                assert isinstance(response_json, dict)
+
 
