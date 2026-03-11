@@ -16,4 +16,15 @@ def create_pet():
     assert response.status_code == 200
     return response.json()
 
-
+@pytest.fixture(scope="function")
+def create_order():
+    payload = {
+        "id": 1,
+        "petId": 1,
+        "quantity": 1,
+        "status": "placed",
+        "complete": True
+    }
+    response = requests.post(url=f"{BASE_URL}/store/order/", json=payload)
+    assert response.status_code == 200
+    return response.json()
