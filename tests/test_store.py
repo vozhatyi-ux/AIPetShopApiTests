@@ -2,7 +2,6 @@ import allure
 import jsonschema
 import requests
 from tests.schemas.order_schema import ORDER_SCHEMA, INVENTORY_SCHEMA
-#from tests.schemas.order_schema import INVENTORY_SCHEMA
 
 BASE_URL = "http://5.181.109.28:9090/api/v3"
 
