@@ -13,5 +13,11 @@ ORDER_SCHEMA = {
 
 INVENTORY_SCHEMA = {
     "type": "object",
-    "additionalProperties": {"type": "integer"}
+    "properties": {
+        "approved": {"type": "integer"},
+        "placed": {"type": "integer"},
+        "delivered": {"type": "integer"},
+        "pending": {"type": "integer"}
+    },
+    "additionalProperties": False
 }
